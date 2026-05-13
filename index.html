@@ -4,7 +4,9 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Indicador Alpha</title>
-  <!-- Google Fonts se carga condicionalmente vía JS tras consentimiento de cookies. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --bg:#0c0c0f; --bg1:#111116; --bg2:#16161c;
@@ -147,36 +149,6 @@
       .disclaimer-body{font-size:12.5px;text-align:left}
     }
 
-    /* COOKIE BANNER */
-    .ck-banner{position:fixed;bottom:24px;left:24px;right:24px;max-width:540px;margin:0 auto;background:var(--bg1);border:1px solid var(--bdr);border-radius:10px;padding:22px 24px;z-index:1000;box-shadow:0 24px 48px rgba(0,0,0,0.5);opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity 0.35s ease,transform 0.35s ease}
-    .ck-banner.show{opacity:1;transform:none;pointer-events:auto}
-    .ck-title{font-size:14px;font-weight:600;color:var(--t);margin-bottom:8px}
-    .ck-text{font-size:12.5px;color:var(--tm);line-height:1.65;margin-bottom:16px}
-    .ck-text a{color:var(--c);text-decoration:none}
-    .ck-text a:hover{text-decoration:underline}
-    .ck-actions{display:flex;gap:8px;flex-wrap:wrap}
-    .ck-btn{font-size:12px;font-weight:500;padding:9px 16px;border-radius:4px;border:1px solid var(--bdr);background:transparent;color:var(--t);cursor:pointer;transition:background 0.2s,opacity 0.2s;font-family:inherit}
-    .ck-btn:hover{background:var(--bg2)}
-    .ck-btn-primary{background:var(--c);color:var(--bg);border-color:var(--c);font-weight:600}
-    .ck-btn-primary:hover{opacity:0.88;background:var(--c)}
-    .ck-panel{display:none;margin:14px 0 4px;padding:14px;background:var(--bg2);border-radius:6px;border:1px solid var(--bdr)}
-    .ck-banner.expanded .ck-panel{display:block}
-    .ck-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:12px;color:var(--tm);border-bottom:1px solid var(--bdr)}
-    .ck-row:last-child{border-bottom:none}
-    .ck-row-name{color:var(--t);font-weight:500}
-    .ck-row-note{color:var(--td);font-size:11px}
-    .ck-switch{position:relative;display:inline-block;width:34px;height:18px;flex-shrink:0}
-    .ck-switch input{opacity:0;width:0;height:0}
-    .ck-slider{position:absolute;cursor:pointer;inset:0;background:var(--bg);border:1px solid var(--bdr);border-radius:18px;transition:background 0.2s}
-    .ck-slider::before{position:absolute;content:"";height:12px;width:12px;left:2px;top:2px;background:var(--tm);border-radius:50%;transition:transform 0.2s,background 0.2s}
-    .ck-switch input:checked + .ck-slider{background:var(--c);border-color:var(--c)}
-    .ck-switch input:checked + .ck-slider::before{transform:translateX(16px);background:var(--bg)}
-    .ck-switch input:disabled + .ck-slider{opacity:0.5;cursor:not-allowed}
-    @media(max-width:600px){
-      .ck-banner{left:12px;right:12px;bottom:12px;padding:18px 18px}
-      .ck-actions{flex-direction:column}
-      .ck-btn{width:100%}
-    }
 
     .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease}
     .reveal.up{opacity:1;transform:none}
@@ -727,128 +699,13 @@
     <div class="footer-disc">© Indicador Alpha · Marca operada por Juan – InversorNovato_, España. Herramienta de análisis técnico. No constituye asesoramiento financiero ni recomendación de inversión. Los resultados pasados no garantizan rendimientos futuros.</div>
   </footer>
 
-  <!-- COOKIE BANNER -->
-  <div class="ck-banner" id="ckBanner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
-    <div class="ck-title">Esta web utiliza cookies</div>
-    <div class="ck-text">Utilizamos una cookie técnica para recordar tu decisión sobre este aviso, y cargamos tipografías desde Google Fonts (que requiere transferir tu IP a Google LLC, EE. UU.). Puedes aceptar, rechazar o personalizar. Más información en nuestra <a href="cookies.html">Política de Cookies</a>.</div>
-    <div class="ck-panel" id="ckPanel">
-      <div class="ck-row">
-        <div>
-          <div class="ck-row-name">Cookies técnicas</div>
-          <div class="ck-row-note">Necesarias para recordar tu decisión. No se pueden desactivar.</div>
-        </div>
-        <label class="ck-switch"><input type="checkbox" checked disabled><span class="ck-slider"></span></label>
-      </div>
-      <div class="ck-row">
-        <div>
-          <div class="ck-row-name">Google Fonts</div>
-          <div class="ck-row-note">Carga de tipografías. Implica transferencia de IP a Google (EE. UU.).</div>
-        </div>
-        <label class="ck-switch"><input type="checkbox" id="ckFonts"><span class="ck-slider"></span></label>
-      </div>
-    </div>
-    <div class="ck-actions">
-      <button class="ck-btn ck-btn-primary" id="ckAcceptAll">Aceptar todas</button>
-      <button class="ck-btn" id="ckRejectAll">Rechazar</button>
-      <button class="ck-btn" id="ckCustom">Personalizar</button>
-      <button class="ck-btn" id="ckSave" style="display:none">Guardar</button>
-    </div>
-  </div>
-
   <script>
-    /* Reveal on scroll */
     const obs = new IntersectionObserver(entries => {
       entries.forEach((e, i) => {
         if (e.isIntersecting) setTimeout(() => e.target.classList.add("up"), i * 55);
       });
     }, {threshold: 0.07});
     document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
-
-    /* COOKIE CONSENT */
-    (function(){
-      var KEY = "ialpha_consent";
-      var MAX_AGE_DAYS = 180; /* 6 meses */
-      var banner = document.getElementById("ckBanner");
-      var panel  = document.getElementById("ckPanel");
-      var btnAccept = document.getElementById("ckAcceptAll");
-      var btnReject = document.getElementById("ckRejectAll");
-      var btnCustom = document.getElementById("ckCustom");
-      var btnSave   = document.getElementById("ckSave");
-      var swFonts   = document.getElementById("ckFonts");
-
-      function loadGoogleFonts(){
-        if (document.getElementById("ia-fonts-stylesheet")) return;
-        var pc1 = document.createElement("link");
-        pc1.rel = "preconnect"; pc1.href = "https://fonts.googleapis.com";
-        document.head.appendChild(pc1);
-        var pc2 = document.createElement("link");
-        pc2.rel = "preconnect"; pc2.href = "https://fonts.gstatic.com"; pc2.crossOrigin = "anonymous";
-        document.head.appendChild(pc2);
-        var link = document.createElement("link");
-        link.id = "ia-fonts-stylesheet";
-        link.rel = "stylesheet";
-        link.href = "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap";
-        document.head.appendChild(link);
-      }
-      function readConsent(){
-        try {
-          var raw = localStorage.getItem(KEY);
-          if (!raw) return null;
-          var data = JSON.parse(raw);
-          if (!data || !data.ts) return null;
-          var ageDays = (Date.now() - data.ts) / 86400000;
-          if (ageDays > MAX_AGE_DAYS) return null;
-          return data;
-        } catch (e) { return null; }
-      }
-      function saveConsent(fonts){
-        try {
-          localStorage.setItem(KEY, JSON.stringify({fonts: !!fonts, ts: Date.now()}));
-        } catch (e) {}
-      }
-      function applyConsent(data){
-        if (data && data.fonts) loadGoogleFonts();
-      }
-      function hideBanner(){ banner.classList.remove("show"); banner.classList.remove("expanded"); }
-      function showBanner(){ setTimeout(function(){ banner.classList.add("show"); }, 250); }
-      function openPreferences(prefill){
-        banner.classList.add("expanded","show");
-        btnAccept.style.display = "inline-block";
-        btnReject.style.display = "inline-block";
-        btnCustom.style.display = "none";
-        btnSave.style.display = "inline-block";
-        if (prefill) swFonts.checked = !!prefill.fonts;
-      }
-
-      /* Expose API for cookies.html and footer */
-      window.iaCookies = {
-        open: function(){ openPreferences(readConsent()); },
-        reset: function(){ try{ localStorage.removeItem(KEY); }catch(e){} location.reload(); }
-      };
-
-      var existing = readConsent();
-      if (existing) {
-        applyConsent(existing);
-      } else {
-        showBanner();
-      }
-
-      btnAccept.addEventListener("click", function(){
-        saveConsent(true); loadGoogleFonts(); hideBanner();
-      });
-      btnReject.addEventListener("click", function(){
-        saveConsent(false); hideBanner();
-      });
-      btnCustom.addEventListener("click", function(){
-        openPreferences(readConsent());
-      });
-      btnSave.addEventListener("click", function(){
-        var f = !!swFonts.checked;
-        saveConsent(f);
-        if (f) loadGoogleFonts();
-        hideBanner();
-      });
-    })();
   </script>
 </body>
 </html>
